@@ -1,0 +1,11 @@
+version: 1
+sources:
+  - name: yalo
+    database: yalo-ae-case
+    schema: yalo_raw
+    tables:
+      - name: iowa_liquor_sale
+      - name: test_order_details
+      - name: test_orders
+
+

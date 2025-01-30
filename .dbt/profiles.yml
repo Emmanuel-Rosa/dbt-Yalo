@@ -1,0 +1,76 @@
+dbtYalo:
+  target: task2
+  outputs:
+  # BIGQUERY outputs
+    raw:
+      type: bigquery
+      method: service-account
+      keyfile: "{{ env_var('CODE_PROJECT_DIR') }}/{{ env_var('KEY_FILE_PATH') }}"
+      project: yalo-ae-case
+      dataset: yalo_raw
+      threads: 4
+
+    task1:
+      type: bigquery
+      method: service-account
+      keyfile: "{{ env_var('CODE_PROJECT_DIR') }}/{{ env_var('KEY_FILE_PATH') }}"
+      project: yalo-ae-case
+      dataset: yalo_task1
+      threads: 4
+
+    task2:
+      type: bigquery
+      method: service-account
+      keyfile: "{{ env_var('CODE_PROJECT_DIR') }}/{{ env_var('KEY_FILE_PATH') }}"
+      project: yalo-ae-case
+      dataset: yalo_task2
+      threads: 4
+
+    task3:
+      type: bigquery
+      method: service-account
+      keyfile: "{{ env_var('CODE_PROJECT_DIR') }}/{{ env_var('KEY_FILE_PATH') }}"
+      project: yalo-ae-case
+      dataset: yalo_task3
+      threads: 4
+
+  # POSTGRES outputs
+    pg_raw:
+      type: postgres
+      port: 5432
+      host: host.docker.internal
+      user: erosa
+      pass: password
+      dbname: YALO
+      schema: yalo_raw
+      threads: 4
+
+    pg_task1:
+      type: postgres
+      port: 5432
+      host: host.docker.internal
+      user: erosa
+      pass: password
+      dbname: YALO
+      schema: yalo_task1
+      threads: 4
+
+    pg_task2:
+      type: postgres
+      port: 5432
+      host: host.docker.internal
+      user: erosa
+      pass: password
+      dbname: YALO
+      schema: yalo_task2
+      threads: 4
+
+    pg_task3:
+      type: postgres
+      port: 5432
+      host: host.docker.internal
+      user: erosa
+      pass: password
+      dbname: YALO
+      schema: yalo_task3
+      threads: 4  

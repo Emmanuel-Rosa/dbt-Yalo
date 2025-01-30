@@ -1,0 +1,117 @@
+version: 1
+models:
+  - name: bronze_sales
+    columns:                
+      - name: invoice_and_item_number
+        tests:
+          - unique
+          - not_null
+      - name: date
+      - name: store_number
+        tests:
+          - not_null
+      - name: store_name
+      - name: address
+      - name: city
+      - name: zip_code
+      - name: store_location
+      - name: county_number
+      - name: county
+      - name: category_pk
+        tests:
+          - not_null
+      - name: category_name
+      - name: flag_category
+      - name: cln_vendor_number
+        tests:
+          - not_null
+      - name: vendor_name
+      - name: cln_item_number
+        tests:
+          - not_null
+      - name: item_description
+      - name: pack
+      - name: bottle_volume_ml
+      - name: state_bottle_cost
+      - name: state_bottle_retail
+      - name: bottles_sold
+      - name: sale_dollars
+      - name: volume_sold_liters
+      - name: volume_sold_gallons
+
+  - name: silver_sales_fact
+    columns:                
+      - name: invoice_and_item_number
+        tests:
+          - unique
+          - not_null
+      - name: date
+      - name: store_number
+        tests:
+          - not_null
+      - name: category_pk
+        tests:
+          - not_null
+      - name: vendor_number
+        tests:
+          - not_null
+      - name: item_number
+        tests:
+          - not_null
+      - name: bottles_sold
+      - name: sale_dollars
+      - name: volume_sold_liters
+      - name: volume_sold_gallons
+  
+  - name: silver_vendor_dim
+    columns:                
+      - name: vendor_number
+        tests:
+          - unique
+          - not_null
+      - name: vendor_name
+
+  - name: silver_store_location_dim
+    columns:                
+      - name: store_number
+        tests:
+          - unique
+          - not_null
+      - name: address
+      - name: city
+      - name: zip_code
+      - name: store_location
+      - name: county_number
+      - name: county
+
+  - name: silver_store_dim
+    columns:                
+      - name: store_number
+        tests:
+          - unique
+          - not_null
+      - name: store_name
+
+  - name: silver_item_dim
+    columns:                
+      - name: item_number
+        tests:
+          - unique
+          - not_null
+      - name: item_description
+      - name: pack
+      - name: bottle_volume_ml
+      - name: state_bottle_cost
+      - name: state_bottle_retail
+
+  - name: silver_category_dim
+    columns: 
+      - name: category_pk
+        tests:
+          - unique
+          - not_null               
+      - name: category_id
+      - name: category_name
+      - name: flag_category
+
+  

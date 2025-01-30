@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: ${PG_CONTAINER_NAME}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: ${PGDATA}
+    ports:
+      - 5432:5432
+    volumes:
+      - ./raw/sample-db.sql:/docker-entrypoint-initdb.d/sample-db.sql
+      - .:/code
+    restart: unless-stopped
+  
+  pg-admin:
+    image: dpage/pgadmin4:latest
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_LISTEN_PORT: 5050
+    ports:
+      - 5050:5050
+    restart: unless-stopped
+
+  pythonapp:
+    build: .
+    container_name: PyContainer
+    ports:
+      - 80:80
+    volumes:
+      - .:/code
+      - ./.dbt:/root/.dbt
+    tty: true
+    
+
+    

@@ -352,7 +352,7 @@ orders:
 
 ## SOLUTION
 
-To solve this case I've created a containerized solution using `dbt` and `BigQuery` (also a separated `postgreSQL` instance for data extraction, if needed). The `iowa_liquor_sales` table provided was stored in `BigQuery`'s public database, so to access it I've created a project in `GCP` (`Yalo-AE-case`) and a `service account` (that generated the `json` file we are using here to connect to the project). With the cloud elements configured, I've copied the table from the `public-data` database to `yalo-as-case`, under the `yalo_raw` schema, as can be seen bellow: 
+To solve this case I've created a containerized solution using `dbt` and `BigQuery` (also a separated `postgreSQL` instance for data extraction, if needed). The `iowa_liquor_sales` table provided was stored in `BigQuery`'s public database, so to access it I've created a project in `GCP` (`Yalo-AE-case`) and a `service account` (that generated the `json` file I've used in the `key` folder to connect to the project - I can send it per request). With the cloud elements configured, I've copied the table from the `public-data` database to `yalo-as-case`, under the `yalo_raw` schema, as can be seen bellow: 
 
 ![alt text](assets/images/image-1.png)
 
@@ -459,7 +459,7 @@ TASK #4
 
 To finalize I would like to thank you for the opportunity to solve this case and to put myself available for any questions, doubts or inquiries about this project, or any other topic! 
 
-*Please remember to ask me to add the necessary emails, if opening the BQ project becomes a necessity.* 
+*Please remember to ask me to send the access key and to add the necessary emails, if opening the BQ project becomes a necessity.* 
 
 Thanks,
 Emmanuel Rosa
